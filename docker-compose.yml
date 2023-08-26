@@ -1,8 +1,0 @@
-version: '3.3'
-services:
-  pos-management:
-    image: thien-dev-trai:pos-management
-    build:
-      context: .
-    ports:
-    - 80:8080
