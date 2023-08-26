@@ -5,5 +5,5 @@ EXPOSE 8080
 
 COPY target/docker-pos-management-0.0.1.jar pos-management-0.0.1.jar
 ENTRYPOINT ["java","-jar","/pos-management-0.0.1.jar"]
-RUN docker build --tag=pos-management:latest .
+RUN docker build --tag=pos-management:latest -f Dockerfile .
 RUN docker run -p8080:8080 pos-management:latest
