@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragments="nav-bar">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                        <i class="fa-duotone fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Master Data</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                        <li><button type="button" class="btn btn-outline-secondary btn-lg px-4"
+                                    data-bs-toggle="modal" data-bs-target="#supplierModal">Supplier</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary btn-lg px-4"
+                            data-bs-toggle="modal" data-bs-target="#productDefinitionModal">Product Definition</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary btn-lg px-4"
+                            data-bs-toggle="modal" data-bs-target="#locationModal">Location</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary btn-lg px-4"
+                            data-bs-toggle="modal" data-bs-target="#categoryModal">Category</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary btn-lg px-4"
+                            data-bs-toggle="modal" data-bs-target="#manufactureModal">Manufacture</button></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</html>
