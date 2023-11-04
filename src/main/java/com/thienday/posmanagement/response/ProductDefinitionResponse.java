@@ -7,27 +7,29 @@ import com.thienday.posmanagement.request.ManufactureDto;
 import com.thienday.posmanagement.request.SupplierDto;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class ProductDefinitionResponse {
-    private Long id;
+    private Long sku;
     private String modelName;
-    private String model;
     private ManufactureDto manufacture;
     private CategoryDto category;
     private LocationDto location;
     private SupplierDto supplier;
-    private String color;
+    private Long createdTime;
+    private Long updatedTime;
 
     public static synchronized ProductDefinitionResponse toResponse(ProductDefinition productDefinition){
         ProductDefinitionResponse result = new ProductDefinitionResponse();
-        result.setId(productDefinition.getId());
+        result.setSku(productDefinition.getId());
         result.setCategory(CategoryDto.toDto(productDefinition.getCategory()));
-        result.setColor(productDefinition.getColor());
         result.setLocation(LocationDto.toDto(productDefinition.getLocation()));
-        result.setModel(productDefinition.getModel());
         result.setManufacture(ManufactureDto.toDto(productDefinition.getManufacture()));
         result.setSupplier(SupplierDto.toDto(productDefinition.getSupplier()));
         result.setModelName(productDefinition.getModelName());
+        result.setCreatedTime(productDefinition.getCreatedTime().getTime());
+        result.setUpdatedTime(productDefinition.getUpdatedTime().getTime());
         return  result;
     }
 }

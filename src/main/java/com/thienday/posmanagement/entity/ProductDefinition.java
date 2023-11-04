@@ -25,11 +25,12 @@ import java.util.List;
 public class ProductDefinition extends BaseEntity{
     @Column(name="model_name")
     private String modelName;
-    @Column(name = "model")
-    private String model;
 
-    @Column(name = "color")
-    private String color;
+//    @Column(name = "model")
+//    private String model;
+//
+//    @Column(name = "color")
+//    private String color;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

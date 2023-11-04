@@ -2,6 +2,7 @@ package com.thienday.posmanagement.request;
 
 import com.thienday.posmanagement.entity.CompoundQueryItem.LocationManufactureCategorySupplier;
 import com.thienday.posmanagement.entity.ProductDefinition;
+import com.thienday.posmanagement.util.UserSessionUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,11 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductDefinitionDto {
     private String modelName;
-
-    private String model;
-
-    private String color;
-
     private Long locationId;
     private Long supplierId;
 
@@ -30,9 +26,8 @@ public class ProductDefinitionDto {
         productDefinition.setManufacture(compoundData.getManufacture());
         productDefinition.setSupplier(compoundData.getSupplier());
         productDefinition.setCategory(compoundData.getCategory());
-        productDefinition.setColor(productDefinitionDto.getColor());
+        productDefinition.setCreatedBy(UserSessionUtil.getUser().getUserName());
         productDefinition.setModelName(productDefinitionDto.getModelName());
-        productDefinition.setModel(productDefinitionDto.getModel());
         return productDefinition;
     }
 
@@ -43,9 +38,8 @@ public class ProductDefinitionDto {
         toBeUpdated.setManufacture(compoundData.getManufacture());
         toBeUpdated.setSupplier(compoundData.getSupplier());
         toBeUpdated.setCategory(compoundData.getCategory());
-        toBeUpdated.setColor(productDefinitionDto.getColor());
+        toBeUpdated.setUpdatedBy(UserSessionUtil.getUser().getUserName());
         toBeUpdated.setModelName(productDefinitionDto.getModelName());
-        toBeUpdated.setModel(productDefinitionDto.getModel());
         return toBeUpdated;
     }
 }

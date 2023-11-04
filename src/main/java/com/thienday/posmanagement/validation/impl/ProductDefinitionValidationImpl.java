@@ -18,7 +18,6 @@ public class ProductDefinitionValidationImpl implements ProductDefinitionValidat
         Objects.requireNonNull(data.getSupplierId(), Constants.CAN_NOT_BE_NULL("Supplier id"));
         Objects.requireNonNull(data.getLocationId(), Constants.CAN_NOT_BE_NULL("Location id"));
         Objects.requireNonNull(data.getModelName(),Constants.CAN_NOT_BE_NULL("Model name"));
-        Objects.requireNonNull(data.getModel(),Constants.CAN_NOT_BE_NULL("Model"));
     };
 
     Consumer<LocationManufactureCategorySupplier> validateFieldsToSavingData = (data) -> {

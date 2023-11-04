@@ -1,11 +1,17 @@
 package com.thienday.posmanagement.controller;
 
+import com.thienday.posmanagement.entity.User;
 import com.thienday.posmanagement.paging.PagingRequest;
 import com.thienday.posmanagement.request.ProductDefinitionDto;
 import com.thienday.posmanagement.response.DataResponse;
+import com.thienday.posmanagement.response.UserResponse;
 import com.thienday.posmanagement.service.ProductDefinitionService;
+import com.thienday.posmanagement.util.UserSessionUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +25,7 @@ import java.util.function.Function;
 
 @RestController
 @RequestMapping("/api/product-definition")
+@Slf4j
 public class ProductDefinitionController {
 
     @Autowired
@@ -40,6 +47,10 @@ public class ProductDefinitionController {
     public ResponseEntity addProductDefinition(
             @PathVariable("productDefinitionId") Long productDefinitionId,
             @RequestBody ProductDefinitionDto productDefinitionDto){
+        UserResponse user = UserSessionUtil.getUser();
+        if(user != null){
+            log.info("user action : {}",user.getUserName());
+        }
         return this.execute(t -> productDefinitionService.saveProductDefinition(
                 productDefinitionDto,productDefinitionId),
                 "Save product definition successfully");
