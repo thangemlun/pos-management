@@ -39,20 +39,19 @@ public class ProductDefinitionController {
 
     @PostMapping("/save")
     public ResponseEntity addProductDefinition(@RequestBody ProductDefinitionDto productDefinitionDto){
-        return this.execute(t -> productDefinitionService.saveProductDefinition(productDefinitionDto,null),
+        return this.execute(t -> productDefinitionService.saveProductDefinition(productDefinitionDto),
                 "Save product definition successfully");
     }
 
-    @PutMapping("/{productDefinitionId}/update")
-    public ResponseEntity addProductDefinition(
-            @PathVariable("productDefinitionId") Long productDefinitionId,
+    @PutMapping("/update")
+    public ResponseEntity updateProductDefinition(
             @RequestBody ProductDefinitionDto productDefinitionDto){
         UserResponse user = UserSessionUtil.getUser();
         if(user != null){
             log.info("user action : {}",user.getUserName());
         }
         return this.execute(t -> productDefinitionService.saveProductDefinition(
-                productDefinitionDto,productDefinitionId),
+                productDefinitionDto),
                 "Save product definition successfully");
     }
 

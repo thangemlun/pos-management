@@ -1,0 +1,23 @@
+server:
+  port: ${port:8080}
+spring:
+  application:
+    name: POS-MANAGEMENT
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 3600000
+        response-timeout: 3600000s
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        ddl-auto: update
+        jdbc:
+          time_zone: UTC
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${db_host:dpg-cjl2vt7v9s6c73atvlkg-a.singapore-postgres.render.com}:5432/${db_name:pos_management}
+    username: ${db_username:thien2357}
+    password: ${db_password:aTExP3ZNPTkIpjwXIPFyoU4W9b4N0exz}

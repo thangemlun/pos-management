@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDefinitionDto {
+    private Long productDefinitionId;
     private String modelName;
     private Long locationId;
     private Long supplierId;
