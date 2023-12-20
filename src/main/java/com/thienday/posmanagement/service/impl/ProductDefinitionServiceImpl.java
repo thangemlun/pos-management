@@ -51,15 +51,15 @@ public class ProductDefinitionServiceImpl implements ProductDefinitionService {
     }
 
     @Override
-    public ProductDefinitionResponse saveProductDefinition(ProductDefinitionDto dto,Long productdefinitionId) {
+    public ProductDefinitionResponse saveProductDefinition(ProductDefinitionDto dto) {
         productDefinitionValidation.validateProductDefinition(dto);
         LocationManufactureCategorySupplier compoundData = getAllMandatoryDataForProductDefinition(dto);
         productDefinitionValidation.validateSaveProductDefinition(compoundData);
-        if(Objects.nonNull(productdefinitionId)) {
-            ProductDefinition oldOne = productDefinitionRepository.findById(productdefinitionId)
+        if(Objects.nonNull(dto.getProductDefinitionId())) {
+            ProductDefinition oldOne = productDefinitionRepository.findById(dto.getProductDefinitionId())
                     .orElse(null);
             Objects.requireNonNull(oldOne,
-                    Constants.NOT_FOUND("Product definition id "+productdefinitionId));
+                    Constants.NOT_FOUND("Product definition id "+ dto.getProductDefinitionId()));
             return ProductDefinitionResponse.toResponse(productDefinitionRepository.save(ProductDefinitionDto
                     .updateData(oldOne,dto,compoundData)));
         }

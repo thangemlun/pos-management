@@ -1,5 +1,6 @@
 package com.thienday.posmanagement.response;
 
+import com.thienday.posmanagement.constant.Constants;
 import com.thienday.posmanagement.entity.User;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +18,7 @@ public class UserResponse {
     private String lastName;
     private String mobilePhone;
     private String email;
-
     private boolean isSuperAdmin = false;
-
     private Set<String> roles;
 
     public static UserResponse toResponse(User user){
@@ -29,9 +28,9 @@ public class UserResponse {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .mobilePhone(user.getMobilePhone())
-                .roles(CollectionUtils.isEmpty(user.getRoles()) ? new HashSet<>()
-                        : user.getRoles().stream().collect(Collectors.toSet()) )
                 .isSuperAdmin(user.isSuperAdmin())
+                .roles(user.isSuperAdmin() ? Constants.ADMIN_ROLES() :
+                        user.getRoles().stream().collect(Collectors.toSet()))
                 .build();
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 public interface ProductDefinitionService {
     ProductDefinitionResponse getProductDefinitionById(Long id);
 
-    ProductDefinitionResponse saveProductDefinition(ProductDefinitionDto dto, Long productDefinitionId);
+    ProductDefinitionResponse saveProductDefinition(ProductDefinitionDto dto);
 
     Page<ProductDefinitionResponse> getListPagingProductDefinition(PagingRequest paging);
 }
