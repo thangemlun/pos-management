@@ -3,7 +3,9 @@ package com.thienday.posmanagement.response;
 import com.thienday.posmanagement.entity.User;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.util.CollectionUtils;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,7 +29,8 @@ public class UserResponse {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .mobilePhone(user.getMobilePhone())
-                .roles(user.getRoles().stream().collect(Collectors.toSet()))
+                .roles(CollectionUtils.isEmpty(user.getRoles()) ? new HashSet<>()
+                        : user.getRoles().stream().collect(Collectors.toSet()) )
                 .isSuperAdmin(user.isSuperAdmin())
                 .build();
     }
