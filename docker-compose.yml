@@ -1,0 +1,14 @@
+version: '1'
+services:
+  pos-management-ui:
+    image: thienday/thien-day:pos-management-be
+    build:
+      context: .
+    ports:
+    - 80:8080
+    environment:
+      db_host: dpg-cm1h7v8cmk4c73dariv0-a.singapore-postgres.render.com
+      db_name: pos_management_bph9
+      db_password: yNmKyK9eNLo6szItaqVpOHCka0pSiteI
+      db_username: thien2357
+      jwt_secret: thien-day
