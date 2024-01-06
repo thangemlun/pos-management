@@ -1,6 +1,6 @@
 version: '1'
 services:
-  pos-management-ui:
+  pos-management-be:
     image: thienday/thien-day:pos-management-be
     build:
       context: .
